@@ -12,6 +12,7 @@ public enum FunctionOption
     Input,
 }
 
+
 public class UIButton : MonoBehaviour
 {
 
@@ -43,6 +44,11 @@ public class UIButton : MonoBehaviour
     private void Tutorial()
     {
         SceneManager.LoadScene(1);
+    }
+
+    private void Field()
+    {
+        SceneManager.LoadScene(2);
     }
 
     #endregion
