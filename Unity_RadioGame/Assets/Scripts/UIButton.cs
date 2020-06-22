@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public enum FunctionOption
 {//기능
@@ -28,6 +29,15 @@ public class UIButton : MonoBehaviour
     private bool isJumping;
     //다이얼 버튼의 부모 (이미지 오브젝트)
     private GameObject DialParent;
+    //숫자 텍스트
+    [SerializeField]
+    private GameObject num;
+    [SerializeField]
+    private GameObject Tank;
+    [SerializeField]
+    private Text OfficerSpeak;
+    [SerializeField]
+    private GameObject canvas2;
 
     public void UIButtonClick()
     {//버튼 클릭시 실행함수
@@ -49,6 +59,19 @@ public class UIButton : MonoBehaviour
     private void Field()
     {
         SceneManager.LoadScene(2);
+        if (num !=null)
+        {
+            num.SetActive(false);
+        }
+        if (canvas2 != null)
+        {
+            canvas2.SetActive(false);
+        }
+        isPowerOn = false;
+        isJumping = false;
+        channelNum = 0;
+
+        Tank = GameObject.Find("Tank");
     }
 
     #endregion
@@ -60,27 +83,27 @@ public class UIButton : MonoBehaviour
         {//현재 다이얼을 이용해서 다음 다이얼 설정
             case 0:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 130);
-                channelNum++;
+                channelNum=1;
                 break;
             case 1:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 105);
-                channelNum++;
+                channelNum=2;
                 break;
             case 2:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 85);
-                channelNum++;
+                channelNum=3;
                 break;
             case 3:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 65);
-                channelNum++;
+                channelNum=4;
                 break;
             case 4:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 35);
-                channelNum++;
+                channelNum=5;
                 break;
             case 5:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 0);
-                channelNum++;
+                channelNum=6;
                 break;
             case 6://다이얼6이 마지막임으로 초기화
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, -35);
@@ -93,15 +116,16 @@ public class UIButton : MonoBehaviour
 
     private void SoundDial()
     {
-        Debug.Log("click");
         if(isPowerOn)
         {//파워꺼짐
             DialParent.transform.rotation = Quaternion.Euler(0, 0, 140);
+            num.SetActive(false);
             isPowerOn = false;
         }
         else
         {//파워켜짐
             DialParent.transform.rotation = Quaternion.Euler(0, 0, 0);
+            num.SetActive(true);
             isPowerOn = true;
         }
     }
@@ -141,6 +165,28 @@ public class UIButton : MonoBehaviour
         }
     }
     #endregion
+
+
+    private void CheckWin()
+    {
+        if(isPowerOn)
+        {
+            if (isJumping)
+            {
+                if(channelNum>=1)
+                {
+                    Debug.Log("작동성공");
+                    
+                    Tank.GetComponent<Tank>().Destroy();
+                    canvas2.SetActive(true);
+                    this.gameObject.SetActive(false);
+                    return;
+                }
+            }
+        }
+        OfficerSpeak.text=("중대장 : \n무전기가 작동하지 않아 빨리 다시 작업해!");
+
+    }
 
 
 }

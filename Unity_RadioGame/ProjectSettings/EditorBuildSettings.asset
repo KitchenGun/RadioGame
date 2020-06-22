@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Field.unity
     guid: 4a426d752966d1943a8fc7bb1d9df263
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: d6782e71c7895d0498e6a6fa88fb7256
   m_configObjects: {}
