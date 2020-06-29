@@ -37,7 +37,13 @@ public class UIButton : MonoBehaviour
     [SerializeField]
     private Text OfficerSpeak;
     [SerializeField]
+    private Text Timer;
+    [SerializeField]
     private GameObject canvas2;
+    [SerializeField]
+    private GameObject EndZone;
+
+    private float distance;
 
     public void UIButtonClick()
     {//버튼 클릭시 실행함수
@@ -50,16 +56,9 @@ public class UIButton : MonoBehaviour
     }
 
 
-    #region MainLobby
-    private void Tutorial()
+    private void Start()
     {
-        SceneManager.LoadScene(1);
-    }
-
-    private void Field()
-    {
-        SceneManager.LoadScene(2);
-        if (num !=null)
+        if (num != null)
         {
             num.SetActive(false);
         }
@@ -71,10 +70,17 @@ public class UIButton : MonoBehaviour
         isJumping = false;
         channelNum = 0;
 
-        Tank = GameObject.Find("Tank");
     }
 
-    #endregion
+    private void Update()
+    {
+            
+            
+            distance = Vector3.Distance(EndZone.transform.position, Tank.transform.position);
+            Debug.Log(distance);
+            Timer.text = "거리 :"+(distance-8).ToString()+"M";
+            
+    }
 
     #region RadioButton
     private void ChannelDial()
@@ -121,12 +127,14 @@ public class UIButton : MonoBehaviour
             DialParent.transform.rotation = Quaternion.Euler(0, 0, 140);
             num.SetActive(false);
             isPowerOn = false;
+            OfficerSpeak.text = ("중대장 : \n뭐하는거야 전원 켜!");
         }
         else
         {//파워켜짐
             DialParent.transform.rotation = Quaternion.Euler(0, 0, 0);
             num.SetActive(true);
             isPowerOn = true;
+            OfficerSpeak.text = ("중대장 : \n기능을 정상으로 맞춰!");
         }
     }
 
@@ -137,14 +145,17 @@ public class UIButton : MonoBehaviour
             case FunctionOption.Normal:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 60);
                 funcOption++;
+                OfficerSpeak.text = ("중대장 : \n방식은 도약!");
                 break;
             case FunctionOption.Signal:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 30);
                 funcOption++;
+                OfficerSpeak.text = ("중대장 : \n정상으로 맞추라고 정상!");
                 break;
             case FunctionOption.Input:
                 DialParent.transform.rotation = Quaternion.Euler(0, 0, 0);
                 funcOption =FunctionOption.Normal;
+                OfficerSpeak.text = ("중대장 : \n정상으로 맞추라고 정상!"); 
                 break;
             default:
                 break;
@@ -155,6 +166,7 @@ public class UIButton : MonoBehaviour
     {//방식이 도약일 경우와 아닐경우 체크
         if(isJumping)
         {
+            OfficerSpeak.text = ("중대장 : \n방식은 도약!");
             DialParent.transform.rotation = Quaternion.Euler(0, 0, 0);
             isJumping = false;
         }
@@ -162,6 +174,7 @@ public class UIButton : MonoBehaviour
         {
             DialParent.transform.rotation = Quaternion.Euler(0, 0, 40);
             isJumping = true;
+            OfficerSpeak.text = ("중대장 : \n1채널!");
         }
     }
     #endregion
@@ -175,6 +188,7 @@ public class UIButton : MonoBehaviour
             {
                 if(channelNum>=1)
                 {
+                    OfficerSpeak.text = ("중대장 : 두루미 두루미 여기는 휘파람 측이고 표적좌표 송신하겠음 \n52SDH4227358688 일대 적 전차 1대 식별 타격명령 하달하겠음!");
                     Debug.Log("작동성공");
                     
                     Tank.GetComponent<Tank>().Destroy();

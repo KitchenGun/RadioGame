@@ -71,10 +71,10 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\MainGun.cs" />
-    <Compile Include="Assets\SceneChanger.cs" />
+    <Compile Include="Assets\Scripts\MainGun.cs" />
+    <Compile Include="Assets\Scripts\SceneChanger.cs" />
+    <Compile Include="Assets\Scripts\Tank.cs" />
     <Compile Include="Assets\Scripts\UIButton.cs" />
-    <Compile Include="Assets\Tank.cs" />
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -94,20 +94,20 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>D:/Git/RadioGame/RadioGame/Unity_RadioGame/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
